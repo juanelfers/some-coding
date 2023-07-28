@@ -1,0 +1,24 @@
+// 1) Describe the process, in a react/redux project, to fetch a set of data from a remote API endpoint,
+// then to store that data into redux and then to present it on the screen.
+--------------------------------------------------------------------------------------------------------
+
+Sure. Imagine you're building this app using React and Redux and you want to show some data from a remote API on your screen. Here's how it works:
+
+1. First, you set up your Redux store. Think of it as the data center for your app.
+
+2. You create "actions" to represent the different things you want to do. In this case, you need an action to fetch the data from the API.
+
+3. Next, you write a "reducer" that listens for those actions and updates the store accordingly.
+
+4. Now you make the API call using fetch or some AJAX library.
+
+5. When the API call is done, you "dispatch" an action with the fetched data. The reducer hears that and updates the store with the new data.
+
+6. Your React component is connected to the Redux store. So, whenever the store changes, your component knows about it.
+
+7. Finally, you use the data from the store in your component to display it on the screen.
+
+The process could involve other tools or aproaches, like Redux Thunk.
+Without Redux, this process is usually handled by a simple useEffect in some of your component;
+then you share the information using props. But we want to avoid prop drilling, so we usually
+end up using Redux, or React Context, or maybe Zustand.
