@@ -26,7 +26,7 @@ function generateUrl(params, baseUrl = 'http://testurl.bitfinx.com/') {
 	// Sort params
 	const sortedParams = {};
 	Object.keys(filteredParams)
-		.sort((a, b) => a > b)
+		.sort((a, b) => a > b ? 1 : -1)
 		.forEach((key) => sortedParams[key] = filteredParams[key]);
 
 	// Finally get query string
@@ -34,3 +34,15 @@ function generateUrl(params, baseUrl = 'http://testurl.bitfinx.com/') {
 
 	return baseUrl + '?' + queryString;
 }
+
+const expected = 'http://testurl.bitfinx.com/?height=300&interval=3h&locale=en&pair=BTC_USD&width=360';
+const received = generateUrl({
+	width: 360,
+	height: 300,
+	locale: 'en',
+	toolbar_bg: '',
+	interval: '3h',
+	pair: 'BTC_USD',
+});
+
+console.assert(expected === received, `\nExpected: ${expected}\nReceived: ${received}`);
